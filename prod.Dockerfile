@@ -20,7 +20,7 @@ RUN yarn build
 # Deploy the build
 FROM nginx:1.21.3-alpine
 
-COPY ./.codebuild/nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./.codebuild/nginx.conf /etc/nginx/nginx.conf
 COPY --from=react-build-step /app/build /usr/share/nginx/html/
 
 EXPOSE 80
