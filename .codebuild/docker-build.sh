@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 for file in react_web; do
-  cp Dockerfile.prod .codebuild/$file.docker
+  cp prod.Dockerfile .codebuild/$file.docker
 done
 
 # Build Docker images
