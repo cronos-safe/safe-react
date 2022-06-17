@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-for file in react_web; do
+for file in react_nginx; do
   cp prod.Dockerfile .codebuild/$file.docker
 done
 
