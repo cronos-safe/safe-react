@@ -48,7 +48,7 @@ describe('Address book', () => {
     cy.findByText(RINKEBY_CSV_ENTRY.name).should('exist')
     cy.findByText(RINKEBY_CSV_ENTRY.address).should('exist')
     cy.get('nav').findByText('Rinkeby').click()
-    cy.findByText('Gnosis Chain').click()
+    cy.findByText('Cronos Chain').click()
     cy.visit(`/${GNO_TEST_SAFE}/address-book`)
     cy.findByText(GNO_CSV_ENTRY.name).should('exist')
     cy.findByText(GNO_CSV_ENTRY.address).should('exist')

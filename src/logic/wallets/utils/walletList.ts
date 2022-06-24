@@ -50,13 +50,13 @@ const wallets = (chainId: ChainId): Wallet[] => {
       walletName: WALLETS.KEYSTONE,
       desktop: false,
       rpcUrl,
-      appName: 'Gnosis Safe',
+      appName: 'Cronos Safe',
     },
     { walletName: WALLETS.TRUST, preferred: true, desktop: false },
     {
       walletName: WALLETS.LATTICE,
       rpcUrl,
-      appName: 'Gnosis Safe',
+      appName: 'Cronos Safe',
       desktop: false,
     },
     {
