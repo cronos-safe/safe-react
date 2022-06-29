@@ -43,6 +43,9 @@ import { trackEvent } from 'src/utils/googleTagManager'
 import { CREATE_SAFE_EVENTS } from 'src/utils/events/createLoadSafe'
 import Track from 'src/components/Track'
 import { didTxRevert } from 'src/logic/safe/store/actions/transactions/utils/transactionHelpers'
+import { useQuery } from 'src/logic/hooks/useQuery'
+import { ADDRESSED_ROUTE } from 'src/routes/routes'
+import { SAFE_APPS_EVENTS } from 'src/utils/events/safeApps'
 
 export const InlinePrefixedEthHashInfo = styled(PrefixedEthHashInfo)`
   display: inline-flex;
@@ -128,6 +131,7 @@ const createNewSafe = (userAddress: string, onHash: (hash: string) => void): Pro
     deploymentTx
       .send(sendParams)
       .once('transactionHash', (txHash) => {
+        trackEvent(CREATE_SAFE_EVENTS.SUBMIT_CREATE_SAFE)
         onHash(txHash)
 
         saveToStorage(SAFE_PENDING_CREATION_STORAGE_KEY, {
@@ -179,6 +183,8 @@ const pollSafeInfo = async (safeAddress: string): Promise<SafeInfo> => {
   })
 }
 
+const APP_URL_QUERY_PARAM = 'appUrl'
+
 function SafeCreationProcess(): ReactElement {
   const [safeCreationTxHash, setSafeCreationTxHash] = useState<string | undefined>()
   const [creationTxPromise, setCreationTxPromise] = useState<Promise<TransactionReceipt>>()
@@ -186,6 +192,8 @@ function SafeCreationProcess(): ReactElement {
   const dispatch = useDispatch()
   const userAddress = useSelector(userAccountSelector)
   const chainId = useSelector(currentChainId)
+  const query = useQuery()
+  const redirect = query.get('redirect')
 
   const [showModal, setShowModal] = useState(false)
   const [modalData, setModalData] = useState<ModalDataType>({ safeAddress: '' })
@@ -248,6 +256,7 @@ function SafeCreationProcess(): ReactElement {
   }
 
   const onRetry = (): void => {
+    trackEvent(CREATE_SAFE_EVENTS.RETRY_CREATE_SAFE)
     const safeCreationFormValues = loadSavedDataOrLeave()
 
     if (!safeCreationFormValues) {
@@ -265,14 +274,38 @@ function SafeCreationProcess(): ReactElement {
   }
 
   const onCancel = () => {
+    trackEvent(CREATE_SAFE_EVENTS.CANCEL_CREATE_SAFE)
     removeFromStorage(SAFE_PENDING_CREATION_STORAGE_KEY)
     goToWelcomePage()
   }
 
-  function onClickModalButton() {
+  const onClickModalButton = () => {
     removeFromStorage(SAFE_PENDING_CREATION_STORAGE_KEY)
 
     const { safeName, safeCreationTxHash, safeAddress } = modalData
+
+    if (redirect) {
+      // If the URL includes ADDRESSED_ROUTE template, then we need to replace it with the new safe address
+      if (redirect.includes(ADDRESSED_ROUTE)) {
+        history.push({
+          pathname: generateSafeRoute(redirect, {
+            shortName: getShortName(),
+            safeAddress,
+          }),
+        })
+      } else {
+        history.push({
+          pathname: redirect,
+        })
+      }
+
+      if (redirect.includes(APP_URL_QUERY_PARAM)) {
+        trackEvent({ ...SAFE_APPS_EVENTS.SHARED_APP_OPEN_AFTER_SAFE_CREATION })
+      }
+
+      return
+    }
+
     history.push({
       pathname: generateSafeRoute(SAFE_ROUTES.DASHBOARD, {
         shortName: getShortName(),
