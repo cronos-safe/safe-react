@@ -1,5 +1,6 @@
 import Footer from './index'
 import { render, fireEvent, screen } from 'src/utils/test-utils'
+import { DISCLAIMER_ROUTE } from 'src/routes/routes'
 
 describe('<Footer>', () => {
   it('Should render Footer component', () => {
@@ -36,22 +37,12 @@ describe('<Footer>', () => {
     expect(preferencesLinkNode).toBeInTheDocument()
   })
 
-  it('Should redirect to Terms and Conditions page in a new tab', () => {
+  it('Should redirect to Disclaimer page', () => {
     render(<Footer />)
 
-    const termsLinkNode = screen.getByText('Terms')
+    const privacyLinkNode = screen.getByText('Disclaimer')
 
-    expect(termsLinkNode).toHaveAttribute('href', 'https://gnosis-safe.io/terms')
-    expect(termsLinkNode).toHaveAttribute('target', '_blank')
-  })
-
-  it('Should redirect to Privacy Policy page in a new tab', () => {
-    render(<Footer />)
-
-    const privacyLinkNode = screen.getByText('Privacy')
-
-    expect(privacyLinkNode).toHaveAttribute('href', 'https://gnosis-safe.io/privacy')
-    expect(privacyLinkNode).toHaveAttribute('target', '_blank')
+    expect(privacyLinkNode).toHaveAttribute('href', DISCLAIMER_ROUTE)
   })
 
   it('Should redirect to Licenses page in a new tab', () => {
@@ -61,24 +52,6 @@ describe('<Footer>', () => {
 
     expect(LicensesLinkNode).toHaveAttribute('href', 'https://gnosis-safe.io/licenses')
     expect(LicensesLinkNode).toHaveAttribute('target', '_blank')
-  })
-
-  it('Should redirect to Imprint page in a new tab', () => {
-    render(<Footer />)
-
-    const imprintLinkNode = screen.getByText('Imprint')
-
-    expect(imprintLinkNode).toHaveAttribute('href', 'https://gnosis-safe.io/imprint')
-    expect(imprintLinkNode).toHaveAttribute('target', '_blank')
-  })
-
-  it('Should redirect to Cookie Policy page in a new tab', () => {
-    render(<Footer />)
-
-    const cookiePolicyLinkNode = screen.getByText('Cookie Policy')
-
-    expect(cookiePolicyLinkNode).toHaveAttribute('href', 'https://gnosis-safe.io/cookie')
-    expect(cookiePolicyLinkNode).toHaveAttribute('target', '_blank')
   })
 
   it('Should show the current Safe React version if its defined in environment variables', () => {

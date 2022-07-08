@@ -8,6 +8,7 @@ import GnoButtonLink from 'src/components/layout/ButtonLink'
 import Link from 'src/components/layout/Link'
 import { openCookieBanner } from 'src/logic/cookies/store/actions/openCookieBanner'
 import { screenSm, secondary, sm } from 'src/theme/variables'
+import { DISCLAIMER_ROUTE } from 'src/routes/routes'
 
 const useStyles = makeStyles({
   footer: {
@@ -58,35 +59,27 @@ const Footer = (): React.ReactElement => {
     <footer className={classes.footer}>
       <span className={classes.item}>©{date.getFullYear()} Cronos</span>
       <span className={classes.sep}>|</span>
-      <Link className={cn(classes.item, classes.link)} target="_blank" to="https://gnosis-safe.io/terms">
-        Terms
+      <Link className={cn(classes.item, classes.link)} target="_blank" to="https://cronos.org/">
+        Cronos Network
       </Link>
       <span className={classes.sep}>|</span>
-      <Link className={cn(classes.item, classes.link)} target="_blank" to="https://gnosis-safe.io/privacy">
-        Privacy
+      <Link className={cn(classes.item, classes.link)} target="_blank" to="https://cronos.org/docs/">
+        Cronos Documentation
       </Link>
       <span className={classes.sep}>|</span>
-      <Link className={cn(classes.item, classes.link)} target="_blank" to="https://gnosis-safe.io/licenses">
-        Licenses
+      <Link className={cn(classes.item, classes.link)} target="_blank" to="https://help.gnosis-safe.io/en/">
+        Help Center
       </Link>
       <span className={classes.sep}>|</span>
-      <Link className={cn(classes.item, classes.link)} target="_blank" to="https://gnosis-safe.io/imprint">
-        Imprint
-      </Link>
-      <span className={classes.sep}>|</span>
-      <Link className={cn(classes.item, classes.link)} target="_blank" to="https://gnosis-safe.io/cookie">
-        Cookie Policy
-      </Link>
-      <span className={classes.sep}>-</span>
       <GnoButtonLink className={cn(classes.item, classes.link, classes.buttonLink)} onClick={openCookiesHandler}>
         Preferences
       </GnoButtonLink>
       <span className={classes.sep}>|</span>
-      <Link
-        className={cn(classes.item, classes.link)}
-        target="_blank"
-        to="https://github.com/gnosis/safe-react/releases"
-      >
+      <Link className={cn(classes.item, classes.link)} to={DISCLAIMER_ROUTE}>
+        Disclaimer
+      </Link>
+      <span className={classes.sep}>|</span>
+      <Link className={cn(classes.item, classes.link)} target="_blank" to="https://github.com/cronos-safe/safe-react">
         {appVersion}
       </Link>
       <span className={classes.sep}>|</span>
