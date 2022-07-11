@@ -10,7 +10,7 @@ RUN apt-get update \
 WORKDIR /app
 
 COPY package.json yarn.lock ./
-COPY patches ./
+COPY patches ./patches
 RUN yarn install
 
 COPY . .
