@@ -2,7 +2,7 @@ import { Fragment, ReactNode, useEffect, useMemo, useState } from 'react'
 import Card from '@material-ui/core/Card'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 import { useSelector } from 'react-redux'
-import { Grid } from '@material-ui/core'
+// import { Grid } from '@material-ui/core'
 
 import Item from './components/Item'
 import Paragraph from 'src/components/layout/Paragraph'
@@ -17,9 +17,9 @@ import { NFTToken } from 'src/logic/collectibles/sources/collectibles.d'
 import { trackEvent } from 'src/utils/googleTagManager'
 import { ASSETS_EVENTS } from 'src/utils/events/assets'
 import VirtualizedList from 'src/components/VirtualizedList'
-import InfoAlert from 'src/components/InfoAlert'
-import SafeAppCard from '../../Apps/components/SafeAppCard/SafeAppCard'
-import { useAppList } from '../../Apps/hooks/appList/useAppList'
+// import InfoAlert from 'src/components/InfoAlert'
+// import SafeAppCard from '../../Apps/components/SafeAppCard/SafeAppCard'
+// import { useAppList } from '../../Apps/hooks/appList/useAppList'
 
 const useStyles = makeStyles(
   createStyles({
@@ -163,9 +163,11 @@ const Collectibles = ({ children }: { children: ReactNode }): React.ReactElement
 }
 
 const CollectiblesPage = (): React.ReactElement => {
+  /*
   const NFT_APPS_TAG = 'nft'
   const { allApps, pinnedSafeApps, togglePin } = useAppList()
   const nftApps = useMemo(() => allApps.filter((app) => app.tags?.includes(NFT_APPS_TAG)), [allApps])
+  const nftApps = []
 
   const infoBar = (
     <InfoAlert
@@ -174,9 +176,10 @@ const CollectiblesPage = (): React.ReactElement => {
       text="Get the most optimal experience with Safe Apps. View your collections, buy or sell NFTs, and more."
     />
   )
-
+  */
   return (
     <Collectibles>
+      {/* 
       {nftApps.length > 0 && (
         <>
           {infoBar}
@@ -197,7 +200,7 @@ const CollectiblesPage = (): React.ReactElement => {
           </Grid>
         </>
       )}
-
+      */}
       <h3>NFTs</h3>
     </Collectibles>
   )
