@@ -13,6 +13,8 @@ const STORAGE_KEYS: Record<ChainId, string> = {
   '246': 'ENERGY_WEB_CHAIN',
   '42161': 'ARBITRUM',
   '73799': 'VOLTA',
+  '25': 'CRONOS_MAINNET',
+  '338': 'CRONOS_TESTNET',
 }
 
 export const storage = new Storage(window.localStorage, '')
@@ -42,4 +44,8 @@ export const saveToStorageWithExpiry = <T = unknown>(key: string, value: T, expi
 
 export const loadFromStorageWithExpiry = <T = unknown>(key: string): T | undefined => {
   return storage.getWithExpiry<T>(key)
+}
+
+export const removeFromStorageWithExpiry = (key: string): void => {
+  return storage.removeItem(key)
 }

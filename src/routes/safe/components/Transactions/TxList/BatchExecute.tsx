@@ -1,10 +1,8 @@
-import React, { ReactElement, useCallback, useContext, useMemo, useState } from 'react'
+import React, { ReactElement, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 
-import { AppReduxState } from 'src/store'
-import { lg, sm, md } from 'src/theme/variables'
-import Button from 'src/components/layout/Button'
+import { lg } from 'src/theme/variables'
 import { ButtonStatus, Modal } from 'src/components/Modal'
 import { currentSafe } from 'src/logic/safe/store/selectors'
 import { isCustomTxInfo, Transaction } from 'src/logic/safe/store/models/types/gateway.d'
@@ -13,23 +11,20 @@ import { generateSignaturesFromTxConfirmations } from 'src/logic/safe/safeTxSign
 import { getExecutionTransaction } from 'src/logic/safe/transactions'
 import { getGnosisSafeInstanceAt, getMultisendContractAddress } from 'src/logic/contracts/safeContracts'
 import { EMPTY_DATA } from 'src/logic/wallets/ethTransactions'
-import { getMultiSendJoinedTxs, MultiSendTx } from 'src/logic/safe/transactions/multisend'
+import { encodeMultiSendCall, getMultiSendJoinedTxs, MultiSendTx } from 'src/logic/safe/transactions/multisend'
 import { userAccountSelector } from 'src/logic/wallets/store/selectors'
 import { getBatchableTransactions } from 'src/logic/safe/store/selectors/gatewayTransactions'
 import { Dispatch } from 'src/logic/safe/store/actions/types'
 import { ModalHeader } from 'src/routes/safe/components/Balances/SendModal/screens/ModalHeader'
 import Row from 'src/components/layout/Row'
 import Paragraph from 'src/components/layout/Paragraph'
-import { GnosisSafe } from 'src/types/contracts/gnosis_safe'
 import Hairline from 'src/components/layout/Hairline'
 import { getInteractionTitle } from 'src/routes/safe/components/Transactions/helpers/utils'
 import PrefixedEthHashInfo from 'src/components/PrefixedEthHashInfo'
 import { getExplorerInfo } from 'src/config'
 import { fetchTransactionDetails } from 'src/logic/safe/store/actions/fetchTransactionDetails'
 import { createMultiSendTransaction } from 'src/logic/safe/store/actions/TxMultiSender'
-import { BatchExecuteHoverContext } from 'src/routes/safe/components/Transactions/TxList/BatchExecuteHoverProvider'
 import { TxArgs } from 'src/logic/safe/store/models/types/transaction'
-import { isTxPending } from 'src/logic/safe/store/selectors/pendingTransactions'
 import {
   getTxConfirmations,
   getTxInfo,
@@ -42,6 +37,13 @@ import { DecodeTxs } from 'src/components/DecodeTxs'
 import { DecodedDataParameterValue } from '@gnosis.pm/safe-react-gateway-sdk'
 import { trackEvent } from 'src/utils/googleTagManager'
 import { Skeleton } from '@material-ui/lab'
+import { sameAddressAsSafeSelector } from 'src/routes/safe/container/selector'
+import { TransactionFailText } from 'src/components/TransactionFailText'
+import { EstimationStatus } from 'src/logic/hooks/useEstimateTransactionGas'
+import { BatchExecuteButton } from 'src/routes/safe/components/Transactions/TxList/BatchExecuteButton'
+import { Errors, logError } from 'src/logic/exceptions/CodedException'
+import { BaseTransaction } from '@gnosis.pm/safe-apps-sdk'
+import { TxSimulation } from '../helpers/Simulation/TxSimulation'
 
 const DecodedTransactions = ({
   transactions,
@@ -99,14 +101,15 @@ async function getTxDetails(transactions: Transaction[], dispatch: Dispatch) {
   )
 }
 
-async function getBatchExecuteData(
-  dispatch: Dispatch,
+function toMultiSendTxs(
   transactions: Transaction[],
-  safeInstance: GnosisSafe,
   safeAddress: string,
+  safeVersion: string,
   account: string,
-) {
-  const txs: MultiSendTx[] = transactions.map((transaction) => {
+): MultiSendTx[] {
+  const safeInstance = getGnosisSafeInstanceAt(safeAddress, safeVersion)
+
+  return transactions.map((transaction) => {
     const txInfo = getTxInfo(transaction, safeAddress)
     const confirmations = getTxConfirmations(transaction)
     const sigs = generateSignaturesFromTxConfirmations(confirmations)
@@ -120,37 +123,32 @@ async function getBatchExecuteData(
       data,
     }
   })
+}
+
+async function getBatchExecuteData(
+  transactions: Transaction[],
+  safeAddress: string,
+  safeVersion: string,
+  account: string,
+) {
+  const txs = toMultiSendTxs(transactions, safeAddress, safeVersion, account)
 
   return getMultiSendJoinedTxs(txs)
 }
 
 // Memoized as it receives no props
-export const BatchExecute = React.memo((): ReactElement => {
-  const hoverContext = useContext(BatchExecuteHoverContext)
+export const BatchExecute = React.memo((): ReactElement | null => {
   const dispatch = useDispatch<Dispatch>()
   const { address: safeAddress, currentVersion } = useSelector(currentSafe)
   const account = useSelector(userAccountSelector)
-  const safeInstance = getGnosisSafeInstanceAt(safeAddress, currentVersion)
   const multiSendContractAddress = getMultisendContractAddress()
   const batchableTransactions = useSelector(getBatchableTransactions)
   const [txsWithDetails, setTxsWithDetails] = useState<Transaction[]>([])
   const [isModalOpen, setModalOpen] = useState(false)
+  const [error, setError] = useState<Error>()
   const [buttonStatus, setButtonStatus] = useState(ButtonStatus.LOADING)
   const [multiSendCallData, setMultiSendCallData] = useState(EMPTY_DATA)
-  const store = useSelector((state: AppReduxState) => state)
-  const hasPendingTx = useMemo(
-    () => batchableTransactions.some(({ id }) => isTxPending(store, id)),
-    [batchableTransactions, store],
-  )
-  const isBatchable = batchableTransactions.length > 1
-
-  const handleOnMouseEnter = useCallback(() => {
-    hoverContext.setActiveHover(batchableTransactions.map((tx) => tx.id))
-  }, [batchableTransactions, hoverContext])
-
-  const handleOnMouseLeave = useCallback(() => {
-    hoverContext.setActiveHover()
-  }, [hoverContext])
+  const isSameAddressAsSafe = useSelector(sameAddressAsSafeSelector)
 
   const toggleModal = () => {
     setModalOpen((prevOpen) => !prevOpen)
@@ -167,16 +165,15 @@ export const BatchExecute = React.memo((): ReactElement => {
     const transactionsWithDetails = await getTxDetails(batchableTransactions, dispatch)
     setTxsWithDetails(transactionsWithDetails)
 
-    const batchExecuteData = await getBatchExecuteData(
-      dispatch,
-      transactionsWithDetails,
-      safeInstance,
-      safeAddress,
-      account,
-    )
-
-    setButtonStatus(ButtonStatus.READY)
-    setMultiSendCallData(batchExecuteData)
+    try {
+      const batchExecuteData = await getBatchExecuteData(transactionsWithDetails, safeAddress, currentVersion, account)
+      setButtonStatus(isSameAddressAsSafe ? ButtonStatus.DISABLED : ButtonStatus.READY)
+      setMultiSendCallData(batchExecuteData)
+    } catch (err) {
+      logError(Errors._619, err.message)
+      setError(err)
+      setButtonStatus(ButtonStatus.DISABLED)
+    }
   }
 
   const handleBatchExecute = async () => {
@@ -191,18 +188,24 @@ export const BatchExecute = React.memo((): ReactElement => {
     toggleModal()
   }
 
+  const multiSendTx: Omit<BaseTransaction, 'value'> | null = useMemo(() => {
+    if (!account || !safeAddress || !currentVersion || txsWithDetails.length === 0) {
+      return null
+    }
+    const txs = toMultiSendTxs(txsWithDetails, safeAddress, currentVersion, account)
+    return {
+      data: encodeMultiSendCall(txs),
+      to: getMultisendContractAddress(),
+    }
+  }, [account, txsWithDetails, currentVersion, safeAddress])
+
+  if (!account) {
+    return null
+  }
+
   return (
     <>
-      <StyledButton
-        color="primary"
-        variant="contained"
-        onClick={handleOpenModal}
-        disabled={!isBatchable || hasPendingTx}
-        onMouseEnter={handleOnMouseEnter}
-        onMouseLeave={handleOnMouseLeave}
-      >
-        Execute Batch {isBatchable ? `(${batchableTransactions.length})` : ''}
-      </StyledButton>
+      <BatchExecuteButton onClick={handleOpenModal} />
       <Modal description="Execute Batch" handleClose={toggleModal} open={isModalOpen} title="Execute Batch">
         <ModalHeader onClose={toggleModal} title="Batch-Execute transactions" />
         <Hairline />
@@ -229,7 +232,7 @@ export const BatchExecute = React.memo((): ReactElement => {
               explorerUrl={getExplorerInfo(multiSendContractAddress)}
             />
           </Row>
-          <Row margin="md">
+          <Row>
             <DecodeTxsWrapper>
               {txsWithDetails.length ? (
                 <DecodedTransactions transactions={txsWithDetails} safeAddress={safeAddress} />
@@ -242,10 +245,17 @@ export const BatchExecute = React.memo((): ReactElement => {
               )}
             </DecodeTxsWrapper>
           </Row>
+          {multiSendTx && <TxSimulation canTxExecute tx={multiSendTx} disabled={buttonStatus !== ButtonStatus.READY} />}
+
           <Paragraph size="md" align="center" color="disabled" noMargin>
-            This feature is still in experimental mode. Be aware that if any of the included transactions reverts, none
-            of them will be executed. This will result in the loss of the allocated transaction fees.
+            Be aware that if any of the included transactions revert, none of them will be executed. This will result in
+            the loss of the allocated transaction fees.
           </Paragraph>
+          <TransactionFailText
+            estimationStatus={error ? EstimationStatus.FAILURE : EstimationStatus.SUCCESS}
+            isExecution
+            isCreation={false}
+          />
         </ModalContent>
         <Modal.Footer withoutBorder>
           <Modal.Footer.Buttons
@@ -264,14 +274,6 @@ export const BatchExecute = React.memo((): ReactElement => {
 })
 
 BatchExecute.displayName = 'BatchExecute'
-
-const StyledButton = styled(Button)`
-  display: block;
-  align-self: flex-end;
-  margin-right: ${sm};
-  margin-top: -51px;
-  margin-bottom: ${md};
-`
 
 const ModalContent = styled.div`
   padding: ${lg} ${lg} 0;

@@ -14,6 +14,7 @@ import { EMPTY_DATA } from 'src/logic/wallets/ethTransactions'
 import { TxParameters } from 'src/routes/safe/container/hooks/useTransactionParameters'
 import { ModalHeader } from 'src/routes/safe/components/Balances/SendModal/screens/ModalHeader'
 import { TxModalWrapper } from 'src/routes/safe/components/Transactions/helpers/TxModalWrapper'
+import { TX_NOTIFICATION_TYPES } from 'src/logic/safe/transactions'
 
 import { useStyles } from './style'
 
@@ -44,7 +45,7 @@ export const UpdateSafeModal = ({ onClose, safeAddress, safeCurrentVersion }: Pr
         txNonce: txParameters.safeNonce,
         safeTxGas: txParameters.safeTxGas,
         ethParameters: txParameters,
-        notifiedTransaction: 'STANDARD_TX',
+        notifiedTransaction: TX_NOTIFICATION_TYPES.STANDARD_TX,
         operation: Operation.DELEGATE,
         delayExecution,
       }),
@@ -70,7 +71,7 @@ export const UpdateSafeModal = ({ onClose, safeAddress, safeCurrentVersion }: Pr
           <Paragraph>
             To check details about updates added by this smart contract version please visit{' '}
             <Link target="_blank" to={`https://github.com/gnosis/safe-contracts/releases/tag/v${LATEST_SAFE_VERSION}`}>
-              latest Gnosis Safe contracts changelog
+              latest Cronos Safe contracts changelog
             </Link>
           </Paragraph>
           <Paragraph noMargin>
