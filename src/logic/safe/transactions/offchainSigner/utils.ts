@@ -39,7 +39,7 @@ export const adjustV: AdjustVOverload = (
       In case V = 0 or 1 we add it to 27 or 28
       Adding 4 is required if signed message was prefixed with "\x19Ethereum Signed Message:\n32"
       Some wallets do that, some wallets don't, V > 30 is used by contracts to differentiate between prefixed and non-prefixed messages
-      https://github.com/gnosis/safe-contracts/blob/main/contracts/GnosisSafe.sol#L292
+      https://github.com/cronos-safe/safe-contracts/blob/main/contracts/GnosisSafe.sol#L292
     */
     if (sigV < MIN_VALID_V_VALUE) {
       sigV += MIN_VALID_V_VALUE

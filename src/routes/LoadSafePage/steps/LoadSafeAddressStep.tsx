@@ -206,7 +206,7 @@ function LoadSafeAddressStep(): ReactElement {
       <Block margin="sm">
         <Paragraph color="primary" noMargin size="lg">
           By continuing you consent to the{' '}
-          <StyledLink href="https://gnosis-safe.io/terms" rel="noopener noreferrer" target="_blank">
+          <StyledLink href="terms" rel="noopener noreferrer" target="_blank">
             terms of use
           </StyledLink>
           {' and '}

@@ -21,7 +21,7 @@ const extractMasterCopyInfo = (mc: MasterCopyReponse[number]): MasterCopy => {
     version: !isCircles ? mc.version : mc.version.substring(0, dashIndex),
     deployer: !isCircles ? MasterCopyDeployer.GNOSIS : MasterCopyDeployer.CIRCLES,
     deployerRepoUrl: !isCircles
-      ? 'https://github.com/gnosis/safe-contracts/releases'
+      ? 'https://github.com/cronos-safe/safe-contracts/releases'
       : 'https://github.com/CirclesUBI/safe-contracts/releases',
   }
   return masterCopy

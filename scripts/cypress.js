@@ -4,7 +4,7 @@ const { exec } = require('child_process')
 const DEPLOYMENTS = {
   dev: 'https://safe-team.dev.gnosisdev.com/app',
   staging: 'https://safe-team.staging.gnosisdev.com/app',
-  prod: 'https://gnosis-safe.io/app',
+  prod: 'https://cronos-safe.3ona.co/welcome',
 }
 
 const command = `cypress ${process.argv[2]}`
