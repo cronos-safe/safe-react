@@ -4,7 +4,7 @@ export enum Operation {
   CREATE,
 }
 
-// types comes from: https://github.com/gnosis/safe-client-gateway/blob/752e76b6d1d475791dbd7917b174bb41d2d9d8be/src/utils.rs
+// types comes from: https://github.com/cronos-safe/safe-client-gateway/blob/752e76b6d1d475791dbd7917b174bb41d2d9d8be/src/utils.rs
 export enum TransferMethods {
   TRANSFER = 'transfer',
   TRANSFER_FROM = 'transferFrom',
@@ -56,8 +56,8 @@ export interface DataDecoded {
 }
 
 // SAFE METHODS TO ITS ID
-// https://github.com/gnosis/safe-contracts/blob/development/test/safeMethodNaming.js
-// https://github.com/gnosis/safe-contracts/blob/development/contracts/GnosisSafe.sol
+// https://github.com/cronos-safe/safe-contracts/blob/development/test/safeMethodNaming.js
+// https://github.com/cronos-safe/safe-contracts/blob/development/contracts/GnosisSafe.sol
 //  [
 //   { name: "addOwnerWithThreshold", id: "0x0d582f13" },
 //   { name: "DOMAIN_SEPARATOR_TYPEHASH", id: "0x1db61b54" },

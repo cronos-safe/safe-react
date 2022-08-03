@@ -2,8 +2,8 @@ import { Operation } from '@gnosis.pm/safe-react-gateway-sdk'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { LATEST_SAFE_VERSION } from 'src/utils/constants'
-import Link from 'src/components/layout/Link'
+// import { LATEST_SAFE_VERSION } from 'src/utils/constants'
+// import Link from 'src/components/layout/Link'
 import Block from 'src/components/layout/Block'
 import Paragraph from 'src/components/layout/Paragraph'
 import Row from 'src/components/layout/Row'
@@ -68,17 +68,18 @@ export const UpdateSafeModal = ({ onClose, safeAddress, safeCurrentVersion }: Pr
           <Paragraph noMargin>
             Update now to take advantage of new features and the highest security standards available.
           </Paragraph>
+          {/*
           <Paragraph>
             To check details about updates added by this smart contract version please visit{' '}
-            <Link target="_blank" to={`https://github.com/gnosis/safe-contracts/releases/tag/v${LATEST_SAFE_VERSION}`}>
+            <Link target="_blank" to={`https://github.com/cronos-safe/safe-contracts/releases/tag/v${LATEST_SAFE_VERSION}`}>
               latest Cronos Safe contracts changelog
             </Link>
           </Paragraph>
+          */}
           <Paragraph noMargin>
             You will need to confirm this update just like any other transaction. This means other owners will have to
             confirm the update in case more than one confirmation is required for this Safe.
           </Paragraph>
-
           {/* A warning for 1.x.x -> 1.3.0 upgrades */}
           <Paragraph>
             <b>Warning</b>: this upgrade will invalidate all unexecuted transactions. This means you will be unable to

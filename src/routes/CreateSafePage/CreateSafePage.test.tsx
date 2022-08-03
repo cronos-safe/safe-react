@@ -537,7 +537,7 @@ describe('<CreateSafePage>', () => {
       expect(getByText(thresholdSelector, '3')).toBeInTheDocument()
     })
 
-    // See https://github.com/gnosis/safe-react/issues/2733
+    // See https://github.com/cronos-safe/safe-react/issues/2733
     it('You can NOT set more confirmations than owners', async () => {
       const customState = {
         providers: {

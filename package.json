@@ -2,13 +2,13 @@
   "name": "safe-react",
   "version": "3.28.0",
   "description": "Allowing crypto users manage funds in a safer way",
-  "website": "https://github.com/gnosis/safe-react#readme",
+  "website": "https://github.com/cronos-safe/safe-react#readme",
   "bugs": {
-    "url": "https://github.com/gnosis/safe-react/issues"
+    "url": "https://github.com/cronos-safe/safe-react/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gnosis/safe-react.git"
+    "url": "https://github.com/cronos-safe/safe-react.git"
   },
   "license": "MIT",
   "author": {
