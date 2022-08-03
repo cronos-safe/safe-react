@@ -10,7 +10,7 @@ The most trusted platform to store digital assets on Ethereum. More info at [gno
 
 For technical information please refer to the [Gnosis Developer Portal](https://docs.gnosis.io/safe/).
 
-For support requests, please open up a [bug issue](https://github.com/gnosis/safe-react/issues/new?template=bug-report.md) or reach out via [Discord](https://chat.gnosis-safe.io).
+For support requests, please open up a [bug issue](https://github.com/cronos-safe/safe-react/issues/new?template=bug-report.md) or reach out via [Discord](https://chat.gnosis-safe.io).
 
 ## Transactions
 
@@ -18,13 +18,13 @@ Please see the [transaction](docs/transactions.md) notes for more information ab
 
 ## Related repos
 
-- [safe-react-e2e-tests](https://github.com/gnosis/safe-react-e2e-tests)
-- [safe-react-gateway-sdk](https://github.com/gnosis/safe-react-gateway-sdk)
-- [safe-react-components](https://github.com/gnosis/safe-react-components)
+- [safe-react-e2e-tests](https://github.com/cronos-safe/safe-react-e2e-tests)
+- [safe-react-gateway-sdk](https://github.com/cronos-safe/safe-react-gateway-sdk)
+- [safe-react-components](https://github.com/cronos-safe/safe-react-components)
 
 ## Deployed environments
 
-- Production: https://gnosis-safe.io/app/
+- Production: https://cronos-safe.3ona.co/welcome/
 - Staging: https://safe-team.staging.gnosisdev.com/app/
 - Dev: https://safe-team.dev.gnosisdev.com/app/
 - PRs: `https://pr<PR_NUMBER>--safereact.review-safe.gnosisdev.com/app/`
@@ -137,7 +137,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-We use [SemVer](https://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/gnosis/gnosis-team-safe/tags).
+We use [SemVer](https://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/cronos-safe/gnosis-team-safe/tags).
 
 ## License
 

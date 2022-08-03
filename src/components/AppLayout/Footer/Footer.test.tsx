@@ -1,5 +1,5 @@
 import Footer from './index'
-import { render, fireEvent, screen } from 'src/utils/test-utils'
+import { render, screen } from 'src/utils/test-utils'
 import { DISCLAIMER_ROUTE } from 'src/routes/routes'
 
 describe('<Footer>', () => {
@@ -45,15 +45,6 @@ describe('<Footer>', () => {
     expect(privacyLinkNode).toHaveAttribute('href', DISCLAIMER_ROUTE)
   })
 
-  it('Should redirect to Licenses page in a new tab', () => {
-    render(<Footer />)
-
-    const LicensesLinkNode = screen.getByText('Licenses')
-
-    expect(LicensesLinkNode).toHaveAttribute('href', 'https://gnosis-safe.io/licenses')
-    expect(LicensesLinkNode).toHaveAttribute('target', '_blank')
-  })
-
   it('Should show the current Safe React version if its defined in environment variables', () => {
     process.env.REACT_APP_APP_VERSION = '1.1.1'
 
@@ -62,7 +53,7 @@ describe('<Footer>', () => {
     const safeReactVersionNode = screen.getByText('v1.1.1')
 
     expect(safeReactVersionNode).toBeInTheDocument()
-    expect(safeReactVersionNode).toHaveAttribute('href', 'https://github.com/gnosis/safe-react/releases')
+    expect(safeReactVersionNode).toHaveAttribute('href', 'https://github.com/cronos-safe/safe-react/releases')
     expect(safeReactVersionNode).toHaveAttribute('target', '_blank')
   })
 
@@ -74,7 +65,7 @@ describe('<Footer>', () => {
     const safeReactVersionNode = screen.getByText('Versions')
 
     expect(safeReactVersionNode).toBeInTheDocument()
-    expect(safeReactVersionNode).toHaveAttribute('href', 'https://github.com/gnosis/safe-react/releases')
+    expect(safeReactVersionNode).toHaveAttribute('href', 'https://github.com/cronos-safe/safe-react/releases')
     expect(safeReactVersionNode).toHaveAttribute('target', '_blank')
   })
 })

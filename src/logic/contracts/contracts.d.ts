@@ -1,4 +1,4 @@
-// https://github.com/gnosis/safe-contracts/blob/main/docs/error_codes.md
+// https://github.com/cronos-safe/safe-contracts/blob/main/docs/error_codes.md
 export enum CONTRACT_ERRORS {
   // General init related
   GS000 = 'Could not finish initialization',
