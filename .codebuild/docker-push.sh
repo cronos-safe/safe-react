@@ -8,6 +8,6 @@ now=$(date +%Y-%m-%d--%H-%M-%S)
 for image in react_nginx; do
   docker tag $image:latest $repository-$image:latest
   docker push $repository-$image:latest
-  docker tag $image:latest $repository-$image:$now
-  docker push $repository-$image:$now
+  docker tag $image:latest $repository-$image:${CODEBUILD_RESOLVED_SOURCE_VERSION:0:7}
+  docker push $repository-$image:${CODEBUILD_RESOLVED_SOURCE_VERSION:0:7}
 done
