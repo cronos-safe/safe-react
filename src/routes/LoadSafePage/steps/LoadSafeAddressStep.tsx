@@ -33,6 +33,7 @@ import { currentChainId } from 'src/logic/config/store/selectors'
 import { reverseENSLookup } from 'src/logic/wallets/getWeb3'
 import { trackEvent } from 'src/utils/googleTagManager'
 import { LOAD_SAFE_EVENTS } from 'src/utils/events/createLoadSafe'
+import { SAFE_ROUTES } from 'src/routes/routes'
 
 export const loadSafeAddressStepLabel = 'Name and address'
 
@@ -207,10 +208,10 @@ function LoadSafeAddressStep(): ReactElement {
         <Paragraph color="primary" noMargin size="lg">
           By continuing you consent to the{' '}
           <StyledLink href="terms" rel="noopener noreferrer" target="_blank">
-            terms of use
+            disclaimer
           </StyledLink>
           {' and '}
-          <StyledLink href="https://gnosis-safe.io/privacy" rel="noopener noreferrer" target="_blank">
+          <StyledLink href={SAFE_ROUTES.TERMS} rel="noopener noreferrer" target="_blank">
             privacy policy
           </StyledLink>
           .

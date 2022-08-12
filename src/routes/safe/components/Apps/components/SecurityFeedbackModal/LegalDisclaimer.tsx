@@ -5,6 +5,7 @@ import {
   StyledSecurityTitle,
   StyledTitle,
 } from 'src/routes/safe/components/Apps/components/SecurityFeedbackModal/styles'
+import { SAFE_ROUTES } from 'src/routes/routes'
 
 const LegalDisclaimer = (): JSX.Element => (
   <StyledContainer>
@@ -19,13 +20,13 @@ const LegalDisclaimer = (): JSX.Element => (
     <br />
     <br />
     <StyledText size="xl">
-      You must read our Terms, which contain more detailed provisions binding on you relating to the apps.
+      You must read our Disclaimer, which contain more detailed provisions binding on you relating to the apps.
     </StyledText>
     <br />
     <br />
     <StyledText size="xl">
       I have read and understood the{' '}
-      <StyledLink href="https://gnosis-safe.io/terms" size="xl" rel="noopener noreferrer" target="_blank">
+      <StyledLink href={SAFE_ROUTES.TERMS} size="xl" rel="noopener noreferrer" target="_blank">
         Terms
       </StyledLink>{' '}
       and this Disclaimer, and agree to be bound by them.
