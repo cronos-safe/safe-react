@@ -1,7 +1,7 @@
 FROM node:14 as react-build-step
 
 # Grab needed environment variables from .env.example
-ENV REACT_APP_ENV ${REACT_APP_ENV}
+ENV REACT_APP_ENV=staging
 
 RUN apt-get update \
     && apt-get install -y libusb-1.0-0 libusb-1.0-0-dev libudev-dev \
