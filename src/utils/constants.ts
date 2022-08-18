@@ -56,4 +56,4 @@ const isProdGateway = () => {
 
 export const GATEWAY_URL =
   process.env.REACT_APP_GATEWAY_URL ||
-  (IS_PRODUCTION || isProdGateway() ? 'https://gateway-cronos-safe.3ona.co' : 'https://gateway-cronos-safe.3ona.co')
+  (IS_PRODUCTION || isProdGateway() ? 'https://gateway.cronos-safe.org' : 'https://gateway-cronos-safe.3ona.co')
