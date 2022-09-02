@@ -6,7 +6,7 @@
 ![coverage](https://coveralls.io/repos/github/gnosis/safe-react/badge.svg?branch=main)
 ![release](https://img.shields.io/github/v/release/gnosis/safe-react)
 
-The most trusted platform to store digital assets on Ethereum. More info at [gnosis-safe.io](https://gnosis-safe.io/)
+Safe is the most trusted platform to store digital assets on Ethereum. More info at [gnosis-safe.io](https://gnosis-safe.io/)
 
 For technical information please refer to the [Gnosis Developer Portal](https://docs.gnosis.io/safe/).
 
