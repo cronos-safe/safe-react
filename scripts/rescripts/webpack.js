@@ -41,10 +41,9 @@ module.exports = (config) => {
         background: '#ddd',
         theme_color: '#002D74',
         // Maskable source image(s) for manifest.json. "true" to use default source. More information at https://web.dev/maskable-icon/. `boolean`, `string`, `buffer` or array of `string`
-        manifestMaskable: true,
-        display: 'browser',
+        manifestMaskable: 'true',
+        display: 'standalone',
         orientation: 'any',
-        start_url: '/welcome',
         icons: {
           android: true,
           appleIcon: true,
