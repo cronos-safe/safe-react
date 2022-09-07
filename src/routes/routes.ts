@@ -68,6 +68,7 @@ export const SAFE_ROUTES = {
   SETTINGS_SPENDING_LIMIT: `${ADDRESSED_ROUTE}/settings/spending-limit`,
   SETTINGS_ADVANCED: `${ADDRESSED_ROUTE}/settings/advanced`,
   TERMS: `${ADDRESSED_ROUTE}/terms`,
+  SETTINGS_SAFE_APPS_PERMISSIONS: `${ADDRESSED_ROUTE}/settings/safe-apps-permissions`,
 }
 
 export const getNetworkRootRoutes = (): Array<{ chainId: ChainId; route: string; shortName: string }> =>
