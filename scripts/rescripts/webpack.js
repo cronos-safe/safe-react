@@ -14,7 +14,7 @@ module.exports = (config) => {
       // The directory to output the assets relative to the webpack output dir.
       // Relative string paths are allowed here ie '../public/static'. If this
       // option is not set, `prefix` is used.
-      outputPath: 'resources',
+      // outputPath: 'resources',
       // Prefix path for generated assets
       // prefix: '',
       // Inject html links/metadata (requires html-webpack-plugin).
