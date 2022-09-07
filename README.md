@@ -1,12 +1,6 @@
 # Cronos Safe
 
-![license](https://img.shields.io/github/license/gnosis/safe-react)
-![build](https://img.shields.io/github/workflow/status/gnosis/safe-react/Deploy%20to%20Mainnet%20network/main)
-![tests](https://img.shields.io/github/workflow/status/gnosis/safe-react/Unit%20tests%20&%20coverage/main?label=tests)
-![coverage](https://coveralls.io/repos/github/gnosis/safe-react/badge.svg?branch=main)
-![release](https://img.shields.io/github/v/release/gnosis/safe-react)
-
-Safe is the most trusted platform to store digital assets on Ethereum. More info at [gnosis-safe.io](https://gnosis-safe.io/)
+Cronos Safe is the most trusted platform to store digital assets on Cronos. More info at [gnosis-safe.io](https://gnosis-safe.io/)
 
 For technical information please refer to the [Gnosis Developer Portal](https://docs.gnosis.io/safe/).
 
@@ -24,10 +18,8 @@ Please see the [transaction](docs/transactions.md) notes for more information ab
 
 ## Deployed environments
 
-- Production: https://cronos-safe.3ona.co/welcome/
-- Staging: https://safe-team.staging.gnosisdev.com/app/
-- Dev: https://safe-team.dev.gnosisdev.com/app/
-- PRs: `https://pr<PR_NUMBER>--safereact.review-safe.gnosisdev.com/app/`
+- Production: https://cronos-safe.org/welcome/
+- Staging: https://cronos-safe.3ona.co/welcome/
 
 ## Getting Started
 

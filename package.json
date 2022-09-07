@@ -12,8 +12,7 @@
   },
   "license": "MIT",
   "author": {
-    "name": "Safe Team",
-    "email": "support@safe.global"
+    "name": "Cronos Safe Team"
   },
   "homepage": "/",
   "scripts": {
@@ -57,7 +56,7 @@
       "!src/**/assets/**"
     ]
   },
-  "productName": "Safe",
+  "productName": "Cronos Safe",
   "resolutions": {
     "@babel/core": "^7.14.0",
     "sass-loader": "^9.0.0"
