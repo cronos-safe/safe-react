@@ -8,6 +8,7 @@ import Provider from './Provider'
 import NetworkSelector from './NetworkSelector'
 import Spacer from 'src/components/Spacer'
 import Col from 'src/components/layout/Col'
+import Img from 'src/components/layout/Img'
 import Row from 'src/components/layout/Row'
 import { headerHeight, md, screenSm, sm } from 'src/theme/variables'
 import { useStateHandler } from 'src/logic/hooks/useStateHandler'
@@ -19,7 +20,7 @@ import { useSelector } from 'react-redux'
 import { OVERVIEW_EVENTS } from 'src/utils/events/overview'
 import Track from 'src/components/Track'
 import Notifications from 'src/components/AppLayout/Header/components/Notifications'
-import AnimatedLogo from 'src/components/AppLayout/Header/components/AnimatedLogo'
+import SafeLogo from '../assets/gnosis-safe-multisig-logo.svg'
 
 const styles = () => ({
   root: {
@@ -107,7 +108,7 @@ const Layout = ({ classes, providerDetails, providerInfo }) => {
       <Col className={classes.logo} middle="xs" start="xs">
         <Track {...OVERVIEW_EVENTS.HOME}>
           <Link to={ROOT_ROUTE}>
-            <AnimatedLogo />
+            <Img alt="Cronos Safe" height={36} src={SafeLogo} testId="heading-gnosis-logo" id="safe-logo" />
           </Link>
         </Track>
       </Col>

@@ -10,12 +10,12 @@ import { closeCookieBanner, openCookieBanner } from 'src/logic/cookies/store/act
 import { cookieBannerState } from 'src/logic/cookies/store/selectors'
 import { loadFromCookie, saveCookie } from 'src/logic/cookies/utils'
 import { mainFontFamily, md, primary, screenSm } from 'src/theme/variables'
-import { closeIntercom, isIntercomLoaded, loadIntercom } from 'src/utils/intercom'
+// import { closeIntercom, isIntercomLoaded, loadIntercom } from 'src/utils/intercom'
 import AlertRedIcon from './assets/alert-red.svg'
-import IntercomIcon from './assets/intercom.png'
-import { useSafeAppUrl } from 'src/logic/hooks/useSafeAppUrl'
+// import IntercomIcon from './assets/intercom.png'
+// import { useSafeAppUrl } from 'src/logic/hooks/useSafeAppUrl'
 import { loadGoogleTagManager, unloadGoogleTagManager } from 'src/utils/googleTagManager'
-import { loadBeamer, unloadBeamer } from 'src/utils/beamer'
+// import { loadBeamer, unloadBeamer } from 'src/utils/beamer'
 
 const isDesktop = process.env.REACT_APP_BUILD_FOR_DESKTOP
 
@@ -168,7 +168,7 @@ const CookiesBannerForm = (props: {
     </div>
   )
 }
-
+/*
 const FakeIntercomButton = ({ onClick }: { onClick: () => void }): ReactElement => {
   return (
     <img
@@ -188,7 +188,7 @@ const FakeIntercomButton = ({ onClick }: { onClick: () => void }): ReactElement 
     />
   )
 }
-
+*/
 const CookiesBanner = isDesktop
   ? Fragment
   : (): ReactElement => {
@@ -199,7 +199,7 @@ const CookiesBanner = isDesktop
       const [localAnalytics, setLocalAnalytics] = useState(false)
 
       const { cookieBannerOpen } = useSelector(cookieBannerState)
-      const isSafeAppView = !!useSafeAppUrl().getAppUrl()
+      // const isSafeAppView = !!useSafeAppUrl().getAppUrl()
 
       const openBanner = useCallback(
         (key?: COOKIE_IDS): void => {
@@ -272,28 +272,28 @@ const CookiesBanner = isDesktop
       }, [localAnalytics])
 
       // Toggle Intercom
-      useEffect(() => {
-        if (isSafeAppView || !localSupportAndUpdates) {
-          isIntercomLoaded() && closeIntercom()
-          return
-        }
+      // useEffect(() => {
+      //  if (isSafeAppView || !localSupportAndUpdates) {
+      //    isIntercomLoaded() && closeIntercom()
+      //    return
+      //  }
 
-        if (!isSafeAppView && localSupportAndUpdates) {
-          !isIntercomLoaded() && loadIntercom()
-        }
-      }, [localSupportAndUpdates, isSafeAppView])
+      //  if (!isSafeAppView && localSupportAndUpdates) {
+      //     !isIntercomLoaded() && loadIntercom()
+      //  }
+      // }, [localSupportAndUpdates, isSafeAppView])
 
       // Toggle Beamer
       useEffect(() => {
-        localSupportAndUpdates ? loadBeamer() : unloadBeamer()
+        // localSupportAndUpdates ? loadBeamer() : unloadBeamer()
       }, [localSupportAndUpdates])
 
       return (
         <>
           {/* A fake Intercom button before Intercom is loaded */}
-          {!localSupportAndUpdates && !isSafeAppView && (
+          {/* !localSupportAndUpdates && !isSafeAppView && (
             <FakeIntercomButton onClick={() => openBanner(COOKIE_IDS.INTERCOM)} />
-          )}
+          ) */}
 
           {/* The cookie banner itself */}
           {cookieBannerOpen && (
