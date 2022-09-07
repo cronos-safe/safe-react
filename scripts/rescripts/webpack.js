@@ -1,4 +1,5 @@
-const { removeWebpackPlugin } = require('@rescripts/utilities')
+const { removeWebpackPlugin, appendWebpackPlugin } = require('@rescripts/utilities')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 module.exports = (config) => {
   config = removeWebpackPlugin('ESLintWebpackPlugin', config)
