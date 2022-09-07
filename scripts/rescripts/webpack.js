@@ -34,6 +34,7 @@ module.exports = (config) => {
         appDescription: 'Crypto.org Safe multi-signature wallet',
         background: '#ddd',
         theme_color: '#002D74',
+        start_url: '/welcome',
         icons: {
           coast: false,
           yandex: false,
