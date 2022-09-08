@@ -1,10 +1,10 @@
 # Cronos Safe
 
-Cronos Safe is the most trusted platform to store digital assets on Cronos. More info at [gnosis-safe.io](https://gnosis-safe.io/)
+Cronos Safe is the most trusted platform to store digital assets on Cronos. More info at [cronos-safe.org](https://cronos-safe.org/)
 
 For technical information please refer to the [Gnosis Developer Portal](https://docs.gnosis.io/safe/).
 
-For support requests, please open up a [bug issue](https://github.com/cronos-safe/safe-react/issues/new?template=bug-report.md) or reach out via [Discord](https://chat.gnosis-safe.io).
+For support requests, please open up a [bug issue](https://github.com/cronos-safe/safe-react/issues/new?template=bug-report.md).
 
 ## Transactions
 
