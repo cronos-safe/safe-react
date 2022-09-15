@@ -207,12 +207,8 @@ function LoadSafeAddressStep(): ReactElement {
       <Block margin="sm">
         <Paragraph color="primary" noMargin size="lg">
           By continuing you consent to the{' '}
-          <StyledLink href="terms" rel="noopener noreferrer" target="_blank">
-            disclaimer
-          </StyledLink>
-          {' and '}
           <StyledLink href={SAFE_ROUTES.TERMS} rel="noopener noreferrer" target="_blank">
-            privacy policy
+            terms of use
           </StyledLink>
           .
         </Paragraph>
