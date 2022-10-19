@@ -1,4 +1,8 @@
 # Cronos Safe
+# ‼️ This repository is in maintenance mode and will be eventually archived.
+# Please use [safe-global/web-core](https://github.com/safe-global/web-core)
+
+# Legacy Safe web UI
 
 Cronos Safe is the most trusted platform to store digital assets on Cronos. More info at [cronos-safe.org](https://cronos-safe.org/)
 
