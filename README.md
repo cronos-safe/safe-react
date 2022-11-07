@@ -1,19 +1,14 @@
+# Cronos Safe
 # ‼️ This repository is in maintenance mode and will be eventually archived.
 # Please use [safe-global/web-core](https://github.com/safe-global/web-core)
 
 # Legacy Safe web UI
 
-![license](https://img.shields.io/github/license/gnosis/safe-react)
-![build](https://img.shields.io/github/workflow/status/gnosis/safe-react/Deploy%20to%20Mainnet%20network/main)
-![tests](https://img.shields.io/github/workflow/status/gnosis/safe-react/Unit%20tests%20&%20coverage/main?label=tests)
-![coverage](https://coveralls.io/repos/github/gnosis/safe-react/badge.svg?branch=main)
-![release](https://img.shields.io/github/v/release/gnosis/safe-react)
-
-Safe is the most trusted platform to store digital assets on Ethereum. More info at [gnosis-safe.io](https://gnosis-safe.io/)
+Cronos Safe is the most trusted platform to store digital assets on Cronos. More info at [cronos-safe.org](https://cronos-safe.org/)
 
 For technical information please refer to the [Gnosis Developer Portal](https://docs.gnosis.io/safe/).
 
-For support requests, please open up a [bug issue](https://github.com/gnosis/safe-react/issues/new?template=bug-report.md) or reach out via [Discord](https://chat.gnosis-safe.io).
+For support requests, please open up a [bug issue](https://github.com/cronos-safe/safe-react/issues/new?template=bug-report.md).
 
 ## Transactions
 
@@ -21,16 +16,14 @@ Please see the [transaction](docs/transactions.md) notes for more information ab
 
 ## Related repos
 
-- [safe-react-e2e-tests](https://github.com/gnosis/safe-react-e2e-tests)
-- [safe-react-gateway-sdk](https://github.com/gnosis/safe-react-gateway-sdk)
-- [safe-react-components](https://github.com/gnosis/safe-react-components)
+- [safe-react-e2e-tests](https://github.com/cronos-safe/safe-react-e2e-tests)
+- [safe-react-gateway-sdk](https://github.com/cronos-safe/safe-react-gateway-sdk)
+- [safe-react-components](https://github.com/cronos-safe/safe-react-components)
 
 ## Deployed environments
 
-- Production: https://gnosis-safe.io/app/
-- Staging: https://safe-team.staging.gnosisdev.com/app/
-- Dev: https://safe-team.dev.gnosisdev.com/app/
-- PRs: `https://pr<PR_NUMBER>--safereact.review-safe.gnosisdev.com/app/`
+- Production: https://cronos-safe.org/welcome/
+- Staging: https://cronos-safe.3ona.co/welcome/
 
 ## Getting Started
 
@@ -140,7 +133,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-We use [SemVer](https://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/gnosis/gnosis-team-safe/tags).
+We use [SemVer](https://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/cronos-safe/gnosis-team-safe/tags).
 
 ## License
 

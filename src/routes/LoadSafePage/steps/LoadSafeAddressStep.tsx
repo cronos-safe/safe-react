@@ -33,6 +33,7 @@ import { currentChainId } from 'src/logic/config/store/selectors'
 import { reverseENSLookup } from 'src/logic/wallets/getWeb3'
 import { trackEvent } from 'src/utils/googleTagManager'
 import { LOAD_SAFE_EVENTS } from 'src/utils/events/createLoadSafe'
+import { SAFE_ROUTES } from 'src/routes/routes'
 
 export const loadSafeAddressStepLabel = 'Name and address'
 
@@ -146,8 +147,8 @@ function LoadSafeAddressStep(): ReactElement {
     <Container data-testid={'load-safe-address-step'}>
       <Block margin="md">
         <Paragraph color="primary" noMargin size="lg">
-          You are about to add an existing Safe on <NetworkLabel />. First, choose a name and enter the Safe address.
-          The name is only stored locally and will never be shared with us or any third parties.
+          You are about to add an existing Cronos Safe on <NetworkLabel />. First, choose a name and enter the Safe
+          address. The name is only stored locally and will never be shared with Cronos or any third parties.
         </Paragraph>
         <Paragraph color="primary" size="lg">
           Your connected wallet does not have to be the owner of this Safe. In this case, the interface will provide you
@@ -206,12 +207,8 @@ function LoadSafeAddressStep(): ReactElement {
       <Block margin="sm">
         <Paragraph color="primary" noMargin size="lg">
           By continuing you consent to the{' '}
-          <StyledLink href="https://gnosis-safe.io/terms" rel="noopener noreferrer" target="_blank">
+          <StyledLink href={SAFE_ROUTES.TERMS} rel="noopener noreferrer" target="_blank">
             terms of use
-          </StyledLink>
-          {' and '}
-          <StyledLink href="https://gnosis-safe.io/privacy" rel="noopener noreferrer" target="_blank">
-            privacy policy
           </StyledLink>
           .
         </Paragraph>

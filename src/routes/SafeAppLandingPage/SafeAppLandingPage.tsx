@@ -14,7 +14,7 @@ import useAsync from 'src/logic/hooks/useAsync'
 import { trackEvent } from 'src/utils/googleTagManager'
 import { SAFE_APPS_EVENTS } from 'src/utils/events/safeApps'
 import SafeAppDetails from 'src/routes/SafeAppLandingPage/components/SafeAppsDetails'
-import TryDemoSafe from 'src/routes/SafeAppLandingPage/components/TryDemoSafe'
+// import TryDemoSafe from 'src/routes/SafeAppLandingPage/components/TryDemoSafe'
 import UserSafeSection from './components/UserSafeSection'
 
 const SafeAppLandingPage = (): ReactElement => {
@@ -98,7 +98,7 @@ const SafeAppLandingPage = (): ReactElement => {
                 />
               )}
               {/* Demo Safe Section */}
-              <TryDemoSafe safeAppUrl={safeAppUrl} />
+              {/* <TryDemoSafe safeAppUrl={safeAppUrl} /> */}
             </ActionsContainer>
           </>
         )}

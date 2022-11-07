@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { SafeAppData } from '@gnosis.pm/safe-react-gateway-sdk'
 import { logError, Errors } from 'src/logic/exceptions/CodedException'
-import { showNotification } from 'src/logic/notifications/store/notifications'
-import { NOTIFICATIONS } from 'src/logic/notifications'
+// import { showNotification } from 'src/logic/notifications/store/notifications'
+// import { NOTIFICATIONS } from 'src/logic/notifications'
 import { FETCH_STATUS } from 'src/utils/requests'
 import { SafeApp } from '../../types'
 import { fetchSafeAppsList } from 'src/logic/safe/api/fetchSafeApps'
@@ -44,7 +44,7 @@ const useRemoteSafeApps = (): ReturnType => {
       } catch (e) {
         setStatus(FETCH_STATUS.ERROR)
         logError(Errors._902, e.message)
-        dispatch(showNotification(NOTIFICATIONS.SAFE_APPS_FETCH_ERROR_MSG))
+        // dispatch(showNotification(NOTIFICATIONS.SAFE_APPS_FETCH_ERROR_MSG))
       }
     }
 

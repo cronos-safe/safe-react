@@ -41,6 +41,6 @@ git tag v3.15.0
 git push --tags
 ```
 
-* Create a [GitHub release](https://github.com/gnosis/safe-react/releases) for this tag
+* Create a [GitHub release](https://github.com/cronos-safe/safe-react/releases) for this tag
 * Notify devops on Slack and send them the release link to deploy to production
 * Back-merge `main` into the `dev` branch to keep them in sync

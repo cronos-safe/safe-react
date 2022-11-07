@@ -17,6 +17,7 @@ import {
   SAFE_ROUTES,
   GENERIC_APPS_ROUTE,
   SAFE_APP_LANDING_PAGE_ROUTE,
+  DISCLAIMER_ROUTE,
 } from './routes'
 import { setChainId } from 'src/logic/config/utils'
 import { setChainIdFromUrl } from 'src/utils/history'
@@ -28,6 +29,7 @@ const CreateSafePage = React.lazy(() => import('./CreateSafePage/CreateSafePage'
 const LoadSafePage = React.lazy(() => import('./LoadSafePage/LoadSafePage'))
 const SafeAppLandingPage = React.lazy(() => import('./SafeAppLandingPage/SafeAppLandingPage'))
 const SafeContainer = React.lazy(() => import('./safe/container'))
+const Terms = React.lazy(() => import('./legal/Disclaimer'))
 
 const Routes = (): React.ReactElement => {
   const location = useLocation()
@@ -116,7 +118,7 @@ const Routes = (): React.ReactElement => {
       />
 
       <Route component={Welcome} exact path={WELCOME_ROUTE} />
-
+      <Route component={Terms} exact path={DISCLAIMER_ROUTE} />
       <Route component={CreateSafePage} exact path={OPEN_SAFE_ROUTE} />
 
       <Route

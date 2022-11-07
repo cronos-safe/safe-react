@@ -7,8 +7,8 @@ import { ListItemType } from 'src/components/List'
 import Header from './Header'
 import Footer from './Footer'
 import Sidebar from './Sidebar'
-import { MobileNotSupported } from './MobileNotSupported'
-import { SAFE_APP_LANDING_PAGE_ROUTE, SAFE_ROUTES, WELCOME_ROUTE } from 'src/routes/routes'
+// import { MobileNotSupported } from './MobileNotSupported'
+import { SAFE_APP_LANDING_PAGE_ROUTE, SAFE_ROUTES, WELCOME_ROUTE, DISCLAIMER_ROUTE } from 'src/routes/routes'
 import useDarkMode from 'src/logic/hooks/useDarkMode'
 import { screenSm } from 'src/theme/variables'
 import TransactionQueueBar from '../TransactionQueueBar/TransactionQueueBar'
@@ -128,15 +128,15 @@ const Layout: React.FC<Props> = ({
   children,
   sidebarItems,
 }): React.ReactElement => {
-  const [mobileNotSupportedClosed, setMobileNotSupportedClosed] = useState(false)
+  // const [mobileNotSupportedClosed, setMobileNotSupportedClosed] = useState(false)
   const [expanded, setExpanded] = useState(false)
   const { pathname } = useLocation()
   useDarkMode()
 
-  const closeMobileNotSupported = () => setMobileNotSupportedClosed(true)
+  // const closeMobileNotSupported = () => setMobileNotSupportedClosed(true)
 
   const hasFooter = !!matchPath(pathname, {
-    path: [SAFE_ROUTES.SETTINGS, WELCOME_ROUTE],
+    path: [SAFE_ROUTES.SETTINGS, WELCOME_ROUTE, DISCLAIMER_ROUTE],
   })
 
   const showSideBar = !useRouteMatch({ path: SAFE_APP_LANDING_PAGE_ROUTE })
@@ -177,7 +177,7 @@ const Layout: React.FC<Props> = ({
         </ContentWrapper>
       </BodyWrapper>
 
-      {!mobileNotSupportedClosed && <MobileNotSupported onClose={closeMobileNotSupported} />}
+      {/* !mobileNotSupportedClosed && <MobileNotSupported onClose={closeMobileNotSupported} /> */}
     </Container>
   )
 }
