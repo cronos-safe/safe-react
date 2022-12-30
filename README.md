@@ -23,7 +23,7 @@ Please see the [transaction](docs/transactions.md) notes for more information ab
 ## Deployed environments
 
 - Production: https://cronos-safe.org/welcome/
-- Staging: https://cronos-safe.3ona.co/welcome/
+- Staging: https://cronos-safe.crolabs-int.co/welcome/
 
 ## Getting Started
 

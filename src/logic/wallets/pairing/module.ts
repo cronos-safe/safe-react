@@ -31,7 +31,7 @@ const getClientMeta = (): IClientMeta => {
   return {
     name: app,
     description: `${client};${app}`,
-    url: 'https://cronos-safe.3ona.co/welcome',
+    url: 'https://cronos-safe.crolabs-int.co/welcome',
     icons: [logo],
   }
 }
